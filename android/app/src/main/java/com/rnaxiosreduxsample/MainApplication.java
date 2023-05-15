@@ -9,6 +9,10 @@ import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactNativeHost;
 import com.facebook.soloader.SoLoader;
 import java.util.List;
+import com.lugg.RNCConfig.RNCConfigPackage;
+import com.facebook.react.modules.envinfo.BuildConfig;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
+
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -25,6 +29,8 @@ public class MainApplication extends Application implements ReactApplication {
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
+          packages.add(new RNCConfigPackage());
+          packages.add(new ReactNativeConfigPackage());
           return packages;
         }
 
@@ -58,5 +64,6 @@ public class MainApplication extends Application implements ReactApplication {
       DefaultNewArchitectureEntryPoint.load();
     }
     ReactNativeFlipper.initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
+    initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
   }
 }
